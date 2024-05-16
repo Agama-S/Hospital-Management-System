@@ -28,7 +28,7 @@ class Userprofile(models.Model):
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    image = models.ImageField(upload_to='users/prof_pic', blank=True)
+    image = models.ImageField(upload_to='static/prof_pic', blank=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
     salary = models.IntegerField(null=True, blank=True)
     attendance = models.IntegerField(null=True, blank=True)

@@ -41,7 +41,7 @@ def view_appointments(request):
     upcoming_appointments = Appointment.objects.filter(doctor=doctor_name, status=True,
                                                        appointment_date__gte=timezone.now())
 
-    previous_appointments = Appointment.objects.filter(doctor=doctor_name, status=False)
+    previous_appointments = Appointment.objects.filter(doctor=doctor_name, status=False).order_by('-appointment_date')
 
     v_appointments = Appointment.objects.filter(doctor=doctor_name)
     if request.method == 'POST':
