@@ -1,0 +1,20 @@
+{% extends 'patient_base.html' %}
+
+{% block title %}Patient{% endblock %}
+
+{% load static %}
+{% block patient_content%}
+
+<div class="page-content-wrapper">
+    <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <h1 class="text-center">Welcome {{request.user.first_name}}!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

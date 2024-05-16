@@ -1,0 +1,108 @@
+{% extends 'patient_base.html' %}
+{% block title %}Patient Appointment{% endblock %}
+{% load static %}
+{% block patient_content%}
+<div class="page-content-wrapper">
+    <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+        <div class="row register-form">
+            <div class="col-md-4 offset-md-4">
+                <form action="#" class="appointment-form ftco-animate" method="post">
+                    {% csrf_token %}
+                    <div class="form-group mb-4">
+                        <h3 style="margin-top: 0px; text-align: center">Make Appointments</h3>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="fullname" readonly placeholder="Patient Name" value="{{ patient.firstname }} {{ patient.lastname }}">
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <div class="form-field">
+                                <div class="select-wrap">
+                                    <select name="department" id="departmentSelect" class="form-control">
+                                        <option value="">Select Department</option>
+                                        {% for department in departments %}
+                                        <option value="{{ department.id }}">{{ department.department }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="form-group">
+                                <div class="form-field">
+                                    <div class="select-wrap">
+                                        <select name="doctor" id="doctorSelect" class="form-control">
+                                            <option value="">Select Doctor</option>
+                                            {% for doctor in doctors %}
+                                            <option value="{{ doctor.id }}">{{ doctor.firstname }} {{ doctor.lastname }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="phonenumber" class="form-control" value="{{ patient.phonenumber }}" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" value="{{ patient.email }}" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <div class="input-wrap">
+                                <div class="icon"><span class="ion-md-calendar"></span></div>
+                                <input type="date" name="appointment_date" class="form-control appointment_date" value="{{ patient.appointment_date }}" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-wrap">
+                                <input type="time" name="appointment_time" class="form-control appointment_time" value="{{ patient.appointment_time }}" placeholder="Time">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <textarea name="symptoms" id="" cols="30" rows="2" class="form-control" placeholder="Symptoms">{{ patient.symptoms }}</textarea>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary py-2 px-5" onclick="showMessage()">submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#departmentSelect').change(function () {
+            var departmentId = $(this).val();
+            $.ajax({
+                url: '/get_doctors/',
+                type: 'GET',
+                data: {
+                    'department_id': departmentId
+                },
+                success: function (data) {
+                    var doctorsSelect = $('#doctorSelect');
+                    doctorsSelect.empty();
+                    doctorsSelect.append('<option value="">Select Doctor</option>');
+                    $.each(data.doctors, function (index, doctor) {
+                        doctorsSelect.append('<option value="' + doctor.name+ '">' + doctor.name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+
+    function showMessage() {
+        alert("successfully submitted!");
+    }
+</script>
+
+{%endblock%}

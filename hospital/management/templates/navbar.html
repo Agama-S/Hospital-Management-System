@@ -1,0 +1,75 @@
+<div class="py-1 bg-black top">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+	    		<div class="col-md-12  d-block">
+		    		<div class="row d-flex">
+		    			<div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">+ 0000 0000 00</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">mediplus@email.com</span>
+					    </div>
+					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
+							<p class="mb-0 register-link">
+								{% if user.is_authenticated %}
+									{% if user.userprofile.user_type == 'Doctor' %}
+										{% if user.userprofile.status %}
+											<a class="mr-3" href="{% url 'doctor_home' %}">Profile</a>
+										{% else %}
+											<a class="mr-3" href="{% url 'user_wait_approval' %}">Profile (Waiting for Approval)</a>
+										{% endif %}
+									{% elif user.userprofile.user_type == 'Patient' %}
+										{% if user.userprofile.status %}
+											<a class="mr-3" href="{% url 'patient_home' %}">Profile</a>
+										{% else %}
+											<a class="mr-3" href="{% url 'user_wait_approval' %}">Profile (Waiting for Approval)</a>
+										{% endif %}
+									{% endif %}
+								    <a href="{% url 'signout' %}">Logout</a>
+								{% else %}
+									<a href="{% url 'signup' %}" class="mr-3">Sign Up</a>
+									<a href="{% url 'signin' %}">Sign In</a>
+								{% endif %}
+							</p>
+						</div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% url 'home' %}">Mediplus</a>
+	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav nav ml-auto">
+	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+	          <li class="nav-item"><a href="#department-section" class="nav-link"><span>Department</span></a></li>
+	          <li class="nav-item"><a href="#doctor-section" class="nav-link"><span>Doctors</span></a></li>
+	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+	          <li class="nav-item cta mr-md-2">
+				  {% if user.is_authenticated %}
+				  <li class="nav-item cta mr-md-2">
+				  	{% if user.userprofile.user_type == 'Patient' %}
+				  		{% if user.userprofile.status %}
+				  			<a class="nav-link" href="{% url 'appointment' %}">Appointment</a>
+				  		{% else %}
+				  			<a class="nav-link" href="{% url 'user_wait_approval' %}">Appointment</a>
+				  		{% endif %}
+				  	{% endif %}
+			      </li>
+				  {% else %}
+				  	<a class="nav-link" href="{% url 'signin' %}">Appointment</a>
+				  {% endif %}
+
+			  </li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>

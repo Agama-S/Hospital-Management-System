@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Wait Approval{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% load static %}
+{% block content %}
+ <div class="container-fluid pt-5  pb-5 bg-light text-center">
+<h1>Hello {{request.user.first_name}}</h1>
+    <p>Your account is not approved. Please wait .</p>
+
+     <div class="field">
+               <a href="{% url 'signout' %}" ><input type="submit" value="Logout"></a>
+            </div>
+</div>
+
+{% endblock %}

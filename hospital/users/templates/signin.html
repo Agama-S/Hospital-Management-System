@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Mediplus Signin{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% load static %}
+{% block content %}
+<div class="wrapper">
+   <div class="title">
+      Login
+   </div>
+   <form action="" method="post">
+      {% csrf_token %}
+         <div style="text-align: center;">
+            {% for message in messages %}
+            <div style="color: #3a4042"><strong style=" color: red;">! </strong><span style="color:red">{{ message }}</span></div>
+            {% endfor %}
+         </div>
+         <div class="field">
+            <input name="username" type="text" required>
+            <label>Username</label>
+         </div>
+         <div class="field">
+            <input name="password" type="password" required>
+            <label>Password</label>
+         </div>
+
+         <div class="field">
+            <input type="submit" value="Login">
+         </div>
+         <div class="signup-link">
+            Not a member? <a href="{% url 'signup' %}">Signup now</a>
+         </div>
+   </form>
+</div>
+{% endblock %}

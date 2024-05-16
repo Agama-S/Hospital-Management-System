@@ -1,0 +1,51 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'doctor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/css/back-to-top-scroll-1.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/css/back-to-top-scroll.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/css/Bold-BS4-Animated-Back-To-Top.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/css/cards.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'doctor/css/Login-Form-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/css/Pretty-Registration-Form.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/css/Sidebar-Menu-1.css' %}">
+    <link rel="stylesheet" href="{% static 'doctor/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="{% static 'doctor/css/styles.css' %}">
+</head>
+<body>
+
+{% include 'doctor_navbar.html' %}
+
+    <div id="wrapper">
+        {% block doctor_sidebar %}
+            {% include 'doctor_sidebar.html' %}
+        {% endblock %}
+
+        {% block doct_content%} {% endblock %}
+    </div>
+
+
+<script src="{% static 'doctor/js/jquery.min.js' %}"></script>
+<script src="{% static 'doctor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'doctor/js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'doctor/js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'doctor/js/bs-init.js' %}"></script>
+<script src="{% static 'doctor/js/Sidebar-Menu.js' %}"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+</script>
+
+
+</body>
+</html>
+
+

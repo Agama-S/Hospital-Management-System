@@ -1,0 +1,51 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'patient/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/css/back-to-top-scroll-1.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/css/back-to-top-scroll.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/css/Bold-BS4-Animated-Back-To-Top.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/css/cards.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'patient/css/Login-Form-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/css/Pretty-Registration-Form.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/css/Sidebar-Menu-1.css' %}">
+    <link rel="stylesheet" href="{% static 'patient/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="{% static 'patient/css/styles.css' %}">
+</head>
+<body>
+
+{% include 'patient_navbar.html' %}
+
+    <div id="wrapper">
+        {% block patient_sidebar %}
+            {% include 'patient_sidebar.html' %}
+        {% endblock %}
+
+        {% block patient_content%} {% endblock %}
+    </div>
+
+
+<script src="{% static 'patient/js/jquery.min.js' %}"></script>
+<script src="{% static 'patient/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'patient/js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'patient/js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'patient/js/bs-init.js' %}"></script>
+<script src="{% static 'patient/js/Sidebar-Menu.js' %}"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+</script>
+
+
+</body>
+</html>
+
+

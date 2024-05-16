@@ -1,0 +1,72 @@
+{% extends 'patient_base.html' %}
+{% block title %}Patient View Appointment{% endblock %}
+{% load static %}
+{% block patient_content%}
+
+<div class="page-content-wrapper">
+    <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+        <div>
+           <div class="container text-center mt-5">
+               <h3>New Appointments</h3>
+               {% for appointment in upcoming_appointments %}
+               <h5 class="appointment-date bg-primary" onclick="toggleDetails(this)">
+                   Appointment on {{ appointment.appointment_date }}
+               </h5>
+
+               <div  class="appointment-details" style="display: none;">
+                   <strong>Department:</strong><br>{{appointment.department }}<br>
+                   <strong>Doctor:</strong><br>{{appointment.doctor }}<br>
+                   <strong>Appointment date:</strong> <br> {{ appointment.appointment_date }}<br>
+                   <strong>Appointment time:</strong> <br> {{ appointment.appointment_time }}<br>
+                   <strong>Symptoms:</strong><br>  {{ appointment.symptoms }}<br>
+                   <a href="{% url 'patient_delete_appointment' appointment.id %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger"><i class="fa fa-trash"></i>
+                   </a>
+
+               </div>
+               {% empty %}
+               <p>No new appointments.</p>
+               {% endfor %}
+               <h3>Previous Appointments</h3>
+               {% for appointment in previous_appointments %}
+               <h5 class="appointment-date bg-primary" onclick="toggleDetails(this)">
+                    Appointment on {{appointment.appointment_date}}
+               </h5>
+               <div  class="appointment-details" style="display: none;">
+                   <strong>Department:</strong><br>{{appointment.department }}<br>
+                   <strong>Doctor:</strong><br>{{appointment.doctor }}<br>
+                   <strong>Appointment date:</strong> <br> {{ appointment.appointment_date }}<br>
+                   <strong>Appointment time:</strong> <br> {{ appointment.appointment_time }}<br>
+                   <strong>Symptoms:</strong><br>  {{ appointment.symptoms }}<br>
+                   <strong>Prescription:</strong><br>  {{ appointment.prescription }}<br>
+               </div>
+               {% empty %}
+               <p>No previous appointments.</p>
+               {% endfor %}
+           </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<script>
+    function toggleDetails(element) {
+        // Hide all appointment details first
+        var allDetails = document.querySelectorAll('.appointment-details');
+        allDetails.forEach(function(details) {
+            details.style.display = "none";
+        });
+
+        // Toggle the display of details of the clicked appointment
+        var details = element.nextElementSibling;
+        if (details.style.display === "none") {
+            details.style.display = "block";
+        } else {
+            details.style.display = "none";
+        }
+    }
+</script>
+{%endblock%}
+

@@ -1,0 +1,92 @@
+{% extends 'patient_base.html' %}
+
+{% block title %}Patient Bill {% endblock %}
+
+{% load static %}
+{% block patient_content%}
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle">
+            <i class="fa fa-bars"></i>
+        </a>
+<style>
+
+
+
+table, th, td {
+  border: 1px solid white;
+  padding-left: 10px;
+  margin-left: 200px;
+  border-collapse: collapse;
+  justify-content: center;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+th:nth-child(even),td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+</style>
+
+        <div class="bill-box">
+            <h1 class="text-center mb-2">Bill</h1>
+            <table style="width: 60%">
+                {% for v_bills in v_bill %}
+                <tr>
+                    <th>Patient Name:</th>
+                    <td>{{ v_bills.patient_name }}</td>
+                </tr>
+                <tr>
+                    <th>Doctor Name:</th>
+                    <td>{{ v_bills.Doctor_name }}</td>
+                </tr>
+                <tr>
+                    <th>Phone Number:</th>
+                    <td>{{ v_bills.phonenumber }}</td>
+                </tr>
+                <tr>
+                    <th>Symptoms:</th>
+                    <td>{{ v_bills.symptoms }}</td>
+                </tr>
+                <tr>
+                    <th>Admit Date:</th>
+                    <td>{{ v_bills.admit_date }}</td>
+                </tr>
+                <tr>
+                    <th>Discharge Date:</th>
+                    <td>{{ v_bills.discharge_date }}</td>
+                </tr>
+                <tr>
+                    <th>Days Spent:</th>
+                    <td>{{ v_bills.day_spent }}</td>
+                </tr>
+                <tr>
+                    <th>Room Charge:</th>
+                    <td>{{ v_bills.room_charge }}</td>
+                </tr>
+                <tr>
+                    <th>Medicine Cost:</th>
+                    <td>{{ v_bills.medicine_cost }}</td>
+                </tr>
+                <tr>
+                    <th>Doctor Fee:</th>
+                    <td>{{ v_bills.doctor_fee }}</td>
+                </tr>
+                <tr>
+                    <th>Other Charge:</th>
+                    <td>{{ v_bills.other_charge }}</td>
+                </tr>
+                <tr>
+                    <th>Total:</th>
+                    <td>{{ v_bills.total }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+    </div>
+</div>
+{%endblock%}
